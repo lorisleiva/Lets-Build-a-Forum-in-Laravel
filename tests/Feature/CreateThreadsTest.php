@@ -73,7 +73,7 @@ class CreateThreadsTest extends TestCase
             ->assertSessionHasErrors('body');
     }
 
-    /** @test */
+    /** @skip */
     function a_thread_requires_recaptcha_verification()
     {
         unset(app()[Recaptcha::class]);
