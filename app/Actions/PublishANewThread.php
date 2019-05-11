@@ -31,12 +31,13 @@ class PublishANewThread extends Action
         ]);
     }
 
-    public function response($thread)
+    public function htmlResponse($thread)
     {
-        if (request()->wantsJson()) {
-            return response($thread, 201);
-        }
-
         return redirect($thread->path())->with('flash', 'Your thread has been published!');
+    }
+
+    public function jsonResponse($thread)
+    {
+        return response($thread, 201);
     }
 }
