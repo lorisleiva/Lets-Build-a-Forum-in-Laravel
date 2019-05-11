@@ -4,6 +4,15 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "repositories": {
+        "dev-package": {
+            "type": "path",
+            "url": "../laravel-actions",
+            "options": {
+                "symlink": true
+            }
+        }
+    },
     "require": {
         "php": ">=5.6.4",
         "algolia/algoliasearch-client-php": "^1.23",
@@ -13,7 +22,8 @@
         "laravel/scout": "^3.0",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
-        "stevebauman/purify": "^2.0"
+        "stevebauman/purify": "^2.0",
+        "lorisleiva/laravel-actions": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

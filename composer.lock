@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ee3301a335c68588110c4291be09181",
+    "content-hash": "08354dcac492d8ad91f24a3f898e81e6",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1077,6 +1077,64 @@
                 "storage"
             ],
             "time": "2019-03-30T13:22:34+00:00"
+        },
+        {
+            "name": "lorisleiva/laravel-actions",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../laravel-actions",
+                "reference": "7154cd984e71d1ab496450ece10462b82f86fde5"
+            },
+            "require": {
+                "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0.0",
+                "orchestra/testbench": "~3.8.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lorisleiva\\Actions\\ActionServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lorisleiva\\Actions\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Lorisleiva\\Actions\\Tests\\": "tests"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Loris LEIVA",
+                    "email": "loris.leiva@gmail.com",
+                    "homepage": "https://lorisleiva.com"
+                }
+            ],
+            "description": "Laravel components that take care of one specific task",
+            "homepage": "https://github.com/lorisleiva/laravel-actions",
+            "keywords": [
+                "action",
+                "component",
+                "controller",
+                "job",
+                "laravel"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "maximebf/debugbar",
@@ -4833,7 +4891,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "lorisleiva/laravel-actions": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
