@@ -5,11 +5,11 @@ namespace App\Actions;
 use App\Thread;
 use Lorisleiva\Actions\Action;
 
-class PublishANewThread extends Action
+class ThreadsStore extends Action
 {
     public function register()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'must-be-confirmed']);
     }
 
     public function rules()

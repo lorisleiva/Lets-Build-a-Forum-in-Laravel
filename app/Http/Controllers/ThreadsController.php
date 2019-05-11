@@ -19,28 +19,6 @@ class ThreadsController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @param  Channel      $channel
-     * @param ThreadFilters $filters
-     * @param \App\Trending $trending
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Channel $channel, ThreadFilters $filters, Trending $trending)
-    {
-        $threads = $this->getThreads($channel, $filters);
-
-        if (request()->wantsJson()) {
-            return $threads;
-        }
-
-        return view('threads.index', [
-            'threads' => $threads,
-            'trending' => $trending->get()
-        ]);
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -48,27 +26,6 @@ class ThreadsController extends Controller
     public function create()
     {
         return view('threads.create');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  integer      $channel
-     * @param  \App\Thread  $thread
-     * @param \App\Trending $trending
-     * @return \Illuminate\Http\Response
-     */
-    public function show($channel, Thread $thread, Trending $trending)
-    {
-        if (auth()->check()) {
-            auth()->user()->read($thread);
-        }
-
-        $trending->push($thread);
-
-        $thread->increment('visits');
-
-        return view('threads.show', compact('thread'));
     }
 
     /**
@@ -107,23 +64,5 @@ class ThreadsController extends Controller
         }
 
         return redirect('/threads');
-    }
-
-    /**
-     * Fetch all relevant threads.
-     *
-     * @param Channel       $channel
-     * @param ThreadFilters $filters
-     * @return mixed
-     */
-    protected function getThreads(Channel $channel, ThreadFilters $filters)
-    {
-        $threads = Thread::latest()->filter($filters);
-
-        if ($channel->exists) {
-            $threads->where('channel_id', $channel->id);
-        }
-
-        return $threads->paginate(25);
     }
 }

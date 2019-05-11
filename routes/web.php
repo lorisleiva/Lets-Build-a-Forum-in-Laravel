@@ -19,14 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('threads', 'ThreadsController@index')->name('threads');
+Route::get('threads', '\App\Actions\ThreadsIndex')->name('threads');
 Route::get('threads/create', 'ThreadsController@create');
 Route::get('threads/search', 'SearchController@show');
-Route::get('threads/{channel}/{thread}', 'ThreadsController@show');
+Route::get('threads/{channel}/{thread}', '\App\Actions\ThreadsShow');
 Route::patch('threads/{channel}/{thread}', 'ThreadsController@update');
 Route::delete('threads/{channel}/{thread}', 'ThreadsController@destroy');
-Route::post('threads', '\App\Actions\PublishANewThread')->middleware('must-be-confirmed');
-Route::get('threads/{channel}', 'ThreadsController@index');
+Route::post('threads', '\App\Actions\ThreadsStore');
+Route::get('threads/{channel}', '\App\Actions\ThreadsIndex');
 
 Route::post('locked-threads/{thread}', 'LockedThreadsController@store')->name('locked-threads.store')->middleware('admin');
 Route::delete('locked-threads/{thread}', 'LockedThreadsController@destroy')->name('locked-threads.destroy')->middleware('admin');
