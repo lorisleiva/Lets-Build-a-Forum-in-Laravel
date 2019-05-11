@@ -51,36 +51,6 @@ class ThreadsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Rules\Recaptcha $recaptcha
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Recaptcha $recaptcha)
-    {
-        request()->validate([
-            'title' => 'required|spamfree',
-            'body' => 'required|spamfree',
-            'channel_id' => 'required|exists:channels,id',
-            // 'g-recaptcha-response' => ['required', $recaptcha]
-        ]);
-
-        $thread = Thread::create([
-            'user_id' => auth()->id(),
-            'channel_id' => request('channel_id'),
-            'title' => request('title'),
-            'body' => request('body')
-        ]);
-
-        if (request()->wantsJson()) {
-            return response($thread, 201);
-        }
-
-        return redirect($thread->path())
-            ->with('flash', 'Your thread has been published!');
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  integer      $channel
