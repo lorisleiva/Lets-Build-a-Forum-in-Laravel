@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::view('/home', 'home')->middleware('auth');
 
 Route::get('threads/search', '\App\Actions\ThreadsSearch');
 Route::get('threads', '\App\Actions\ThreadsIndex')->name('threads');
@@ -28,8 +28,8 @@ Route::delete('threads/{channel}/{thread}', '\App\Actions\ThreadsDestroy');
 Route::post('threads', '\App\Actions\ThreadsStore');
 Route::get('threads/{channel}', '\App\Actions\ThreadsIndex');
 
-Route::post('locked-threads/{thread}', 'LockedThreadsController@store')->name('locked-threads.store')->middleware('admin');
-Route::delete('locked-threads/{thread}', 'LockedThreadsController@destroy')->name('locked-threads.destroy')->middleware('admin');
+Route::post('locked-threads/{thread}', '\App\Actions\ThreadsLock')->name('locked-threads.store');
+Route::delete('locked-threads/{thread}', '\App\Actions\ThreadsUnlock')->name('locked-threads.destroy');
 
 Route::get('/threads/{channel}/{thread}/replies', 'RepliesController@index');
 Route::post('/threads/{channel}/{thread}/replies', 'RepliesController@store');
