@@ -50,11 +50,13 @@ class LockThreadsTest extends TestCase
     /** @test */
     public function once_locked_a_thread_may_not_receive_new_replies()
     {
+        $this->withExceptionHandling();
+
         $this->signIn();
 
         $thread = create('App\Thread', ['locked' => true]);
 
-        $this->post($thread->path() . '/replies', [
+        $this->postJson($thread->path() . '/replies', [
             'body' => 'Foobar',
             'user_id' => auth()->id()
         ])->assertStatus(422);

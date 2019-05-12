@@ -31,8 +31,8 @@ Route::get('threads/{channel}', '\App\Actions\ThreadsIndex');
 Route::post('locked-threads/{thread}', '\App\Actions\ThreadsLock')->name('locked-threads.store');
 Route::delete('locked-threads/{thread}', '\App\Actions\ThreadsUnlock')->name('locked-threads.destroy');
 
-Route::get('/threads/{channel}/{thread}/replies', 'RepliesController@index');
-Route::post('/threads/{channel}/{thread}/replies', 'RepliesController@store');
+Route::get('/threads/{channel}/{thread}/replies', '\App\Actions\RepliesIndex');
+Route::post('/threads/{channel}/{thread}/replies', '\App\Actions\RepliesStore');
 Route::patch('/replies/{reply}', 'RepliesController@update');
 Route::delete('/replies/{reply}', 'RepliesController@destroy')->name('replies.destroy');
 
