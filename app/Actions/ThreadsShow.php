@@ -10,8 +10,8 @@ class ThreadsShow extends Action
 {
     public function handle($channel, Thread $thread, Trending $trending)
     {
-        if (auth()->check()) {
-            auth()->user()->read($thread);
+        if ($user = $this->user()) {
+            $user->read($thread);
         }
 
         $trending->push($thread);
