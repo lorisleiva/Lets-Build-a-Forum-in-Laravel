@@ -16,3 +16,5 @@ Route::get('/threads/{channel}/{thread}/replies', 'RepliesIndex');
 Route::post('/threads/{channel}/{thread}/replies', 'RepliesStore');
 Route::patch('/replies/{reply}', 'RepliesUpdate');
 Route::delete('/replies/{reply}', 'RepliesDestroy')->name('replies.destroy');
+
+Route::post('/replies/{reply}/best', 'BestRepliesStore')->name('best-replies.store');
