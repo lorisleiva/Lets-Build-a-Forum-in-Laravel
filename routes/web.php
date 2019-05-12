@@ -33,8 +33,8 @@ Route::delete('locked-threads/{thread}', '\App\Actions\ThreadsUnlock')->name('lo
 
 Route::get('/threads/{channel}/{thread}/replies', '\App\Actions\RepliesIndex');
 Route::post('/threads/{channel}/{thread}/replies', '\App\Actions\RepliesStore');
-Route::patch('/replies/{reply}', 'RepliesController@update');
-Route::delete('/replies/{reply}', 'RepliesController@destroy')->name('replies.destroy');
+Route::patch('/replies/{reply}', '\App\Actions\RepliesUpdate');
+Route::delete('/replies/{reply}', '\App\Actions\RepliesDestroy')->name('replies.destroy');
 
 Route::post('/replies/{reply}/best', 'BestRepliesController@store')->name('best-replies.store');
 
