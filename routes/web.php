@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('threads/search', 'SearchController@show');
+Route::get('threads/search', '\App\Actions\ThreadsSearch');
 Route::get('threads', '\App\Actions\ThreadsIndex')->name('threads');
 Route::get('threads/create', '\App\Actions\ThreadsCreate');
 Route::get('threads/{channel}/{thread}', '\App\Actions\ThreadsShow');
