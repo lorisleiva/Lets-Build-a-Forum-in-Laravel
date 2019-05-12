@@ -19,12 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('threads', '\App\Actions\ThreadsIndex')->name('threads');
-Route::get('threads/create', 'ThreadsController@create');
 Route::get('threads/search', 'SearchController@show');
+Route::get('threads', '\App\Actions\ThreadsIndex')->name('threads');
+Route::get('threads/create', '\App\Actions\ThreadsCreate');
 Route::get('threads/{channel}/{thread}', '\App\Actions\ThreadsShow');
-Route::patch('threads/{channel}/{thread}', 'ThreadsController@update');
-Route::delete('threads/{channel}/{thread}', 'ThreadsController@destroy');
+Route::patch('threads/{channel}/{thread}', '\App\Actions\ThreadsUpdate');
+Route::delete('threads/{channel}/{thread}', '\App\Actions\ThreadsDestroy');
 Route::post('threads', '\App\Actions\ThreadsStore');
 Route::get('threads/{channel}', '\App\Actions\ThreadsIndex');
 
