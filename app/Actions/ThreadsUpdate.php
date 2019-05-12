@@ -16,13 +16,18 @@ class ThreadsUpdate extends Action
     {
         return $this->can('update', $thread);
     }
-    
-    public function handle(Thread $thread)
+
+    public function rules()
     {
-        $thread->update(request()->validate([
+        return [
             'title' => 'required',
-            'body' => 'required'
-        ]));
+            'body' => 'required',
+        ];
+    }
+    
+    public function handle(Thread $thread, $title, $body)
+    {
+        $thread->update(compact('title', 'body'));
 
         return $thread;
     }
