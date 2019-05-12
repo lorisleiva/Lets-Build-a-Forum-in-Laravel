@@ -14,7 +14,7 @@ class ThreadsDestroy extends Action
 
     public function authorize(Thread $thread)
     {
-        return \Illuminate\Support\Facades\Gate::allows('update', $thread);
+        return $this->can('update', $thread);
     }
     
     public function handle(Thread $thread)
