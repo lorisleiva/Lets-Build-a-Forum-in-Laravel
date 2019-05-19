@@ -33,13 +33,11 @@ class RepliesStore extends Action
         ];
     }
 
-    public function withValidator($validator, Thread $thread)
+    public function afterValidator($validator, Thread $thread)
     {
-        $validator->after(function ($validator) use ($thread) {
-            if ($thread->locked) {
-                $validator->errors()->add('thread', 'Thread is locked.');
-            }
-        });
+        if ($thread->locked) {
+            $validator->errors()->add('thread', 'Thread is locked.');
+        }
     }
 
     public function handle(Thread $thread, $body)
