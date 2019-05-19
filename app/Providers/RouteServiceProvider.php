@@ -39,16 +39,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        $this->mapActionRoutes();
-
         //
-    }
-
-    protected function mapActionRoutes()
-    {
-        Route::middleware('web')
-             ->namespace('App\Actions')
-             ->group(base_path('routes/action.php'));
     }
 
     protected function mapWebRoutes()
