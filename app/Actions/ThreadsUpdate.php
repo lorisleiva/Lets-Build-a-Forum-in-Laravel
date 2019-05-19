@@ -25,9 +25,9 @@ class ThreadsUpdate extends Action
         ];
     }
     
-    public function handle(Thread $thread, $title, $body)
+    public function handle(Thread $thread)
     {
-        $thread->update(compact('title', 'body'));
+        $thread->update($this->validated());
 
         return $thread;
     }

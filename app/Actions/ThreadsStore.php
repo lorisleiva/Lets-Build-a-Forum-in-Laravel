@@ -23,12 +23,7 @@ class ThreadsStore extends Action
 
     public function handle()
     {
-        return Thread::create([
-            'user_id' => $this->user()->id,
-            'channel_id' => $this->channel_id,
-            'title' => $this->title,
-            'body' => $this->body,
-        ]);
+        return $this->user()->threads()->create($this->validated());
     }
 
     public function htmlResponse($thread)

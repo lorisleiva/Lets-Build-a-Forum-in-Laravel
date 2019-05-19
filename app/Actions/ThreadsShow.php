@@ -8,7 +8,7 @@ use Lorisleiva\Actions\Action;
 
 class ThreadsShow extends Action
 {
-    public function handle($channel, Thread $thread, Trending $trending)
+    public function handle(Thread $thread, Trending $trending)
     {
         if ($user = $this->user()) {
             $user->read($thread);

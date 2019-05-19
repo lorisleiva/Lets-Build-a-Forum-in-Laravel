@@ -24,7 +24,10 @@ class UsersUpdateAvatar extends Action
         $this->user()->update([
             'avatar_path' => $avatar->store('avatars', 'public')
         ]);
+    }
 
+    public function htmlResponse()
+    {
         return response([], 204);
     }
 }

@@ -24,8 +24,8 @@ class RepliesUpdate extends Action
         ];
     }
 
-    public function handle(Reply $reply, $body)
+    public function handle(Reply $reply)
     {
-        $reply->update(compact('body'));
+        $reply->update($this->validated());
     }
 }
