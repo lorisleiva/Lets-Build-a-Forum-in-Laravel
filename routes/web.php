@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::view('/home', 'home')->middleware('auth');
 
-Route::namespace('\App\Actions')->group(function () {
+Route::actions(function () {
     Route::get('threads/search', 'ThreadsSearch');
     Route::get('threads', 'ThreadsIndex')->name('threads');
     Route::get('threads/create', 'ThreadsCreate');
