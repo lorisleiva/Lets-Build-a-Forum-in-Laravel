@@ -41,11 +41,12 @@ Route::actions(function () {
 
     Route::post('/threads/{channel}/{thread}/subscriptions', 'ThreadSubscriptionsStore');
     Route::delete('/threads/{channel}/{thread}/subscriptions', 'ThreadSubscriptionsDestroy');
+
+    Route::post('/replies/{reply}/favorites', 'FavoritesStore');
+    Route::delete('/replies/{reply}/favorites', 'FavoritesDestroy');
 });
 
 
-Route::post('/replies/{reply}/favorites', 'FavoritesController@store');
-Route::delete('/replies/{reply}/favorites', 'FavoritesController@destroy');
 
 Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
 Route::get('/profiles/{user}/notifications', 'UserNotificationsController@index');
