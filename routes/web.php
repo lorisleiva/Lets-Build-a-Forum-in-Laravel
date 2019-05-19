@@ -44,11 +44,10 @@ Route::actions(function () {
 
     Route::post('/replies/{reply}/favorites', 'FavoritesStore');
     Route::delete('/replies/{reply}/favorites', 'FavoritesDestroy');
+
+    Route::get('/profiles/{user}', 'UserShow')->name('profile');
 });
 
-
-
-Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
 Route::get('/profiles/{user}/notifications', 'UserNotificationsController@index');
 Route::delete('/profiles/{user}/notifications/{notification}', 'UserNotificationsController@destroy');
 
