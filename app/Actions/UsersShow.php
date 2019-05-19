@@ -6,7 +6,7 @@ use App\User;
 use App\Activity;
 use Lorisleiva\Actions\Action;
 
-class UserShow extends Action
+class UsersShow extends Action
 {
     public function handle(User $user)
     {

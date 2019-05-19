@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Authentication routes.
 Auth::routes();
+Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index')->name('register.confirm');
 
+// Home pages.
+Route::view('/', 'welcome');
 Route::view('/home', 'home')->middleware('auth');
 
+// Actions.
 Route::actions(function () {
     Route::get('threads/search', 'ThreadsSearch');
     Route::get('threads', 'ThreadsIndex')->name('threads');
@@ -45,13 +46,10 @@ Route::actions(function () {
     Route::post('/replies/{reply}/favorites', 'FavoritesStore');
     Route::delete('/replies/{reply}/favorites', 'FavoritesDestroy');
 
-    Route::get('/profiles/{user}', 'UserShow')->name('profile');
+    Route::get('/profiles/{user}', 'UsersShow')->name('profile');
+    Route::get('/api/users', 'UsersIndex');
+    Route::post('/api/users/{user}/avatar', 'UsersUpdateAvatar')->name('avatar');
     
     Route::get('/profiles/{user}/notifications', 'UserNotificationsIndex');
     Route::delete('/profiles/{user}/notifications/{notification}', 'UserNotificationsDestroy');
 });
-
-Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index')->name('register.confirm');
-
-Route::get('api/users', 'Api\UsersController@index');
-Route::post('api/users/{user}/avatar', 'Api\UserAvatarController@store')->middleware('auth')->name('avatar');
