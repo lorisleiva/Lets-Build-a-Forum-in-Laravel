@@ -46,10 +46,10 @@ Route::actions(function () {
     Route::delete('/replies/{reply}/favorites', 'FavoritesDestroy');
 
     Route::get('/profiles/{user}', 'UserShow')->name('profile');
+    
+    Route::get('/profiles/{user}/notifications', 'UserNotificationsIndex');
+    Route::delete('/profiles/{user}/notifications/{notification}', 'UserNotificationsDestroy');
 });
-
-Route::get('/profiles/{user}/notifications', 'UserNotificationsController@index');
-Route::delete('/profiles/{user}/notifications/{notification}', 'UserNotificationsController@destroy');
 
 Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index')->name('register.confirm');
 
